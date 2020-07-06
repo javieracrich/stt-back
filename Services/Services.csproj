@@ -1,0 +1,56 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <AssemblyName>Services</AssemblyName>
+    <RootNamespace>Services</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Cosmos\PushLogService.cs" />
+    <Compile Remove="IGenericRepository.cs" />
+    <Compile Remove="Migrations\20190614001255_8.cs" />
+    <Compile Remove="Migrations\20190614001255_8.Designer.cs" />
+    <Compile Remove="Migrations\20190710191533_12.cs" />
+    <Compile Remove="Migrations\20190710191533_12.Designer.cs" />
+    <Compile Remove="Migrations\20190710191715_12.cs" />
+    <Compile Remove="Migrations\20190710191715_12.Designer.cs" />
+    <Compile Remove="Migrations\20190713142046_14.cs" />
+    <Compile Remove="Migrations\20190713142046_14.Designer.cs" />
+    <Compile Remove="Migrations\20190713162605_15.cs" />
+    <Compile Remove="Migrations\20190713162605_15.Designer.cs" />
+    <Compile Remove="Migrations\20190716191137_15.cs" />
+    <Compile Remove="Migrations\20190716191137_15.Designer.cs" />
+    <Compile Remove="Migrations\20190729021807_17.cs" />
+    <Compile Remove="Migrations\20190729021807_17.Designer.cs" />
+    <Compile Remove="Migrations\20190808194437_services.cs" />
+    <Compile Remove="Migrations\20190808194437_services.Designer.cs" />
+    <Compile Remove="Migrations\20190809220559_20.cs" />
+    <Compile Remove="Migrations\20190809220559_20.Designer.cs" />
+    <Compile Remove="PushService.cs" />
+    <Compile Remove="UserRepository.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="appsettings.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="appsettings.json">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="8.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.App" Version="2.2.5" />
+    <PackageReference Include="Microsoft.Azure.DocumentDB.Core" Version="2.4.1" />
+    <PackageReference Include="WindowsAzure.Storage" Version="9.3.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj" />
+    <ProjectReference Include="..\Domain\Domain.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,518 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Api</name>
+    </assembly>
+    <members>
+        <member name="F:Api.Auth.AuthPolicy.Reader">
+            <summary>
+            Only Read Permission
+            </summary>
+        </member>
+        <member name="F:Api.Auth.AuthPolicy.Contributor">
+            <summary>
+            Create,Read,Update,Delete Permissions
+            </summary>
+        </member>
+        <member name="M:Api.Auth.JwtFactory.ToUnixEpochDate(System.DateTime)">
+            <returns>Date converted to seconds since Unix epoch (Jan 1, 1970, midnight UTC).</returns>
+        </member>
+        <member name="P:Api.Auth.JwtIssuerOptions.Issuer">
+            <summary>
+            4.1.1.  "iss" (Issuer) Claim - The "iss" (issuer) claim identifies the principal that issued the JWT.
+            </summary>
+        </member>
+        <member name="P:Api.Auth.JwtIssuerOptions.Subject">
+            <summary>
+            4.1.2.  "sub" (Subject) Claim - The "sub" (subject) claim identifies the principal that is the subject of the JWT.
+            </summary>
+        </member>
+        <member name="P:Api.Auth.JwtIssuerOptions.Audience">
+            <summary>
+            4.1.3.  "aud" (Audience) Claim - The "aud" (audience) claim identifies the recipients that the JWT is intended for.
+            </summary>
+        </member>
+        <member name="P:Api.Auth.JwtIssuerOptions.Expiration">
+            <summary>
+            4.1.4.  "exp" (Expiration Time) Claim - The "exp" (expiration time) claim identifies the expiration time on or after which the JWT MUST NOT be accepted for processing.
+            </summary>
+        </member>
+        <member name="P:Api.Auth.JwtIssuerOptions.NotBefore">
+            <summary>
+            4.1.5.  "nbf" (Not Before) Claim - The "nbf" (not before) claim identifies the time before which the JWT MUST NOT be accepted for processing.
+            </summary>
+        </member>
+        <member name="P:Api.Auth.JwtIssuerOptions.IssuedAt">
+            <summary>
+            4.1.6.  "iat" (Issued At) Claim - The "iat" (issued at) claim identifies the time at which the JWT was issued.
+            </summary>
+        </member>
+        <member name="P:Api.Auth.JwtIssuerOptions.ValidFor">
+            <summary>
+            Set the timespan the token will be valid for (default is 120 min)
+            </summary>
+        </member>
+        <member name="P:Api.Auth.JwtIssuerOptions.JtiGenerator">
+            <summary>
+            "jti" (JWT ID) Claim (default ID is a GUID)
+            </summary>
+        </member>
+        <member name="P:Api.Auth.JwtIssuerOptions.SigningCredentials">
+            <summary>
+            The signing key to use when generating tokens.
+            </summary>
+        </member>
+        <member name="M:Api.Controllers.AlertController.PostAlert(Domain.Models.PostAlertRequest)">
+            <summary>
+            Saves a new alert in the db and sends the push notification to selected users
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.AlertController.GetLatestAlerts">
+            <summary>
+            Retrieves the last 10 alerts for the current school
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.AlertController.CountAlerts">
+            <summary>
+            Retrieves alert count from the last 30 days;
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.BusController.PostSupervisor(System.Guid,Domain.Models.PostUserModel)">
+            <summary>
+            Creates a new supervisor for a specific school bus
+            </summary>
+            <param name="busCode"></param>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.BusController.GetSupervisor(System.Guid)">
+            <summary>
+            Retrieves Supervisors for a specific school bus
+            </summary>
+            <param name="busCode"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Api.Controllers.BusLocationController">
+            <summary>
+            MOVE THIS TO A MICRO SERVICE
+            </summary>
+        </member>
+        <member name="M:Api.Controllers.BusLocationController.GetMostRecentLocations">
+            <summary>
+            Returns the most recent location of all the buses for a school starting from a week ago
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.BusLocationController.GetMostRecentLocationForBus(System.Guid)">
+            <summary>
+            Returns the most recent location of a specific school bus
+            </summary>
+            <param name="busCode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.BusLocationController.GetHistoricLocations(System.String,System.DateTime,System.DateTime)">
+            <summary>
+            Returns historic gps locations in a date range 
+            </summary>
+            <remarks>
+            Dates in ISO 8601 format.
+            https://en.wikipedia.org/wiki/ISO_8601
+            </remarks>
+            <param name="deviceCode">Device Code (XXXX#Y) </param>
+            <param name="from">From (YYYY-MM-DD) </param>
+            <param name="until">Until (YYYY-MM-DD) </param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.CardController.GetAllCards">
+            <summary>
+            Retrieves all the cards
+            </summary>
+            <remarks>
+            STATUS:
+            1-active
+            2-disabled
+            </remarks>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.CardController.CountCards">
+            <summary>
+            Retrieves card total count
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.CardController.CountAttachedCards">
+            <summary>
+            Retrieves the amount of cards attached to students
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.CardController.PostBulkInsertCard(Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            bulk inserts cards. Post a .txt file with a card code per line.
+            </summary>
+            <param name="file"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.CardController.Search(Domain.Models.PostSearchCardFilter)">
+            <summary>
+            Searches cards by card code.
+            </summary>
+            <param name="filter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.CardController.PostCard(Domain.Models.PostCardModel)">
+            <summary>
+            Creates a new card
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.CardController.PutCard(System.String,Domain.Models.PutCardModel)">
+            <summary>
+            Updates card name and status
+            </summary>
+            <remarks>
+            status 1:active
+            status 2:disabled
+            </remarks>
+            <param name="cardCode"></param>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.CardController.DeleteCard(System.String)">
+            <summary>
+            Deletes a card
+            </summary>
+            <param name="cardCode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.DashboardController.GetAllDashboardNotifications">
+            <summary>
+            this endpoint is only used in the admin panel web app
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.DeviceController.PostDevice(Domain.Models.PostDeviceModel)">
+            <summary>
+            Creates a new Device
+            </summary>
+            <remarks>
+            type 1: school pointing outside
+            type 2: school pointing inside  
+            type 3: school bus front door
+            </remarks>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.DeviceController.PatchRelateDevices(Domain.Models.PatchRelateDevicesModel)">
+            <summary>
+            Relates an Inside Device to an Outside Device. 
+            </summary>
+        </member>
+        <member name="M:Api.Controllers.NewsController.GetAllNews">
+            <summary>
+            Gets the 10 latest news items.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.NewsController.PostNews(Domain.Models.PostNewsItemModel)">
+            <summary>
+            Creates a new NewsItem
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.PushController.Notification">
+            <summary>
+            Send a push notification using Firebase (only for testing purposes)
+            </summary>
+        </member>
+        <member name="T:Api.Controllers.RFIDController">
+            <summary>
+            MOVE THIS TO A MICRO SERVICE
+            </summary>
+        </member>
+        <member name="M:Api.Controllers.RFIDController.PostRfid(Domain.Models.PostDeviceEventModel)">
+            <summary>
+            Ingestion endpoint for RFID marks.
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.RFIDController.GetLatestRfidEvents(System.String,System.String)">
+            <summary>
+            Retrieves all the RFID marks from the last 24 hours.
+            </summary>
+            <param name="deviceCode"></param>
+            <param name="cardCode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.SchoolController.GetAllSchools">
+            <summary>
+            Retrieves all schools
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.SchoolController.GetSchool(System.Guid)">
+            <summary>
+            Retrieves a school
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.SchoolController.GetAssistance">
+            <summary>
+            Retrieves today's assistance count
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.SchoolController.GetStudents(Domain.Models.PostStudentFilter)">
+            <summary>
+            Search students using a filter
+            </summary>
+            <remarks>
+            LastStatusId:
+            Leaving School = 1
+            Entering School = 2
+            -----------------------------
+            Grades:
+            PreKinder = 1
+            Kinder = 2
+            Elementary = 3
+            Middle = 4
+            High = 5,
+            </remarks>
+            <param name="filter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.SchoolController.GetAllStudentsInRoom(System.Guid)">
+            <summary>
+            Retrieves all students in a room
+            </summary>
+            <remarks>
+            LastStatusId:
+            Leaving School = 1
+            Entering School = 2
+            </remarks>
+            <param name="roomCode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.SchoolController.GetUsers(Domain.Models.PostUserFilter)">
+            <summary>
+            Search users (not students) using a filter
+            </summary>
+            <remarks>
+            USER CATEGORIES:
+            Director = 1, Driver = 2, Supervisor = 3, Student = 4, Parent = 5, Teacher = 6
+            </remarks>
+            <param name="filter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.SchoolController.GetAllRooms">
+            <summary>
+            Retrieves all available rooms
+            </summary>
+            <remarks>
+            PreKinder = 1
+            Kinder = 2
+            Elementary = 3
+            Middle = 4
+            High = 5
+            </remarks>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.SchoolController.GetRoom(System.Guid)">
+            <summary>
+            Retrieves a room by room code
+            </summary>
+            <param name="roomCode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.SchoolController.PostSchoolRoom(Domain.Models.PostGradeRoomModel)">
+            <summary>
+            Creates a grade room for a specific school and grade
+            </summary>
+            <remarks>
+            PreKinder = 1
+            Kinder = 2
+            Elementary = 3
+            Middle = 4
+            High = 5
+            </remarks>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.SchoolController.PutSchoolRoom(System.Guid,Domain.PutGradeRoomModel)">
+            <summary>
+            Updates a room
+            </summary>
+        </member>
+        <member name="M:Api.Controllers.SchoolController.PostSchool(Domain.Models.PostSchoolModel)">
+            <summary>
+            Creates a new school
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.SchoolController.PutSchool(Domain.Models.PutSchoolModel)">
+            <summary>
+            Updates a school
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.SchoolController.PostDirector(Domain.Models.PostUserWithPasswordModel)">
+            <summary>
+            Adds a director to a school
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.SchoolController.PostDriver(Domain.Models.PostUserWithPasswordModel)">
+            <summary>
+            Adds a driver to a school
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.SchoolController.PostTeacher(Domain.Models.PostUserWithPasswordModel)">
+            <summary>
+            Adds a teacher to a school
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.SchoolController.PostSchoolLogo(Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            Adds a logo image to the school (5MB MAX)
+            </summary>
+            <param name="file"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.UserController.PostParent(Domain.Models.PostUserWithPasswordModel)">
+            <summary>
+            Creates a new parent
+            </summary>
+            <remarks>
+            USER CATEGORIES:
+             Director = 1, Driver = 2, Supervisor = 3, Student = 4, Parent = 5, Teacher = 6
+             -------------------
+            SCHOOL GRADES:
+             PreKinder = 1, Kinder = 2, Elementary = 3, Middle = 4, High = 5
+            </remarks>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.UserController.PostStudent(System.Guid,Domain.Models.PostStudentModel)">
+            <summary>
+            Creates a new child (Student) for a parent
+            </summary>
+            <param name="parentUserCode"></param>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.UserController.PostAdminUser(Domain.Models.PostUserWithPasswordModel)">
+            <summary>
+            Creates a new Admin user
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.UserController.PostGovStateUser(Domain.Models.PostUserWithPasswordModel)">
+            <summary>
+            Creates a new Gov State user.
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.UserController.DetachStudent(System.Guid,System.Guid)">
+            <summary>
+            Detaches a student from the parent
+            </summary>
+            <param name="parentUserCode"></param>
+            <param name="studentUserCode"></param>
+            <returns>True if it was detached, false otherwise</returns>
+        </member>
+        <member name="M:Api.Controllers.UserController.GetAllUsers(System.Int32)">
+            <summary>
+            Retrieves all users by page
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.UserController.CountUsers">
+            <summary>
+            Retrieves total user count
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.UserController.GetUser(System.Guid)">
+            <summary>
+            Retrieves a user
+            </summary>
+            <param name="userCode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.UserController.GetStudent(System.Guid)">
+            <summary>
+            Retrieves children (Students) for a parent
+            </summary>
+            <param name="parentUserCode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.UserController.GetStudentCards(System.Guid)">
+            <summary>
+            Retrieves card history for a student
+            </summary>
+            <param name="studentUserCode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.UserController.AttachCardToStudent(System.Guid,System.String)">
+            <summary>
+            Attaches an existing card to an existing student
+            </summary>
+            <param name="studentUserCode"></param>
+            <param name="cardCode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.UserController.GetActiveStudentCard(System.Guid)">
+            <summary>
+            Retrieves Student active card
+            </summary>
+            <param name="studentUserCode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.UserController.DeleteUser(System.Guid)">
+            <summary>
+            Deletes a user
+            </summary>
+            <param name="userCode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.UserController.GetLocation(System.Guid)">
+            <summary>
+            RETRIEVES THE STUDENT LOCATION
+            </summary>
+            <param name="studentUserCode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.UserController.PutUser(System.Guid,Domain.Models.PutUserModel)">
+            <summary>
+            Updates a user
+            </summary>
+            <param name="userCode"></param>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.UserController.PostUserImage(System.Guid,Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            Adds a profile image to a user. (5MB MAX)
+            </summary>
+            <param name="userCode"></param>
+            <param name="file"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
